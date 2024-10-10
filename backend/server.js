@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const uploadRoutes = require('./routes/upload');
-const projectRoutes = require('./routes/projects');
+const projectRoutes = require('./routes/project');
 const issueRoutes = require('./routes/issues');
 const reportRoutes = require('./routes/reports');
 
@@ -10,10 +10,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect('mongodb://localhost:27017/lighting-commissioning', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}).then(() => console.log('MongoDB connected'))
+mongoose.connect('mongodb://localhost:27017/lighting-commissioning')
+  .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
 
 // Make sure each route is used properly
