@@ -4,12 +4,14 @@ const cors = require('cors');
 const uploadRoutes = require('./routes/upload');
 const projectRoutes = require('./routes/project');
 const issueRoutes = require('./routes/issues');
+const reportRoutes = require('./routes/reports');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use('/api', projectRoutes);
 app.use('/api', issueRoutes);
+app.use('/api', reportRoutes);
 
 mongoose.connect('mongodb://localhost:27017/lighting-commissioning', {
   useNewUrlParser: true,
