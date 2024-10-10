@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Button, TextField, Typography, Container } from '@mui/material';
 
 const Upload = () => {
   const [file, setFile] = useState(null);
@@ -32,15 +33,26 @@ const Upload = () => {
   };
 
   return (
-    <div>
-      <h2>Upload Project Data</h2>
+    <Container maxWidth="sm">
+      <Typography variant="h4" gutterBottom>
+        Upload Project Data
+      </Typography>
       <form onSubmit={onSubmit}>
-        <input type="file" accept=".csv, .xlsx, .xls" onChange={onFileChange} />
-        <button type="submit">Upload</button>
+        <TextField
+          type="file"
+          variant="outlined"
+          fullWidth
+          onChange={onFileChange}
+          sx={{ mb: 2 }}
+        />
+        <Button type="submit" variant="contained" color="primary">
+          Upload
+        </Button>
       </form>
-      {message && <p>{message}</p>}
-    </div>
+      {message && <Typography color="error" sx={{ mt: 2 }}>{message}</Typography>}
+    </Container>
   );
 };
 
 export default Upload;
+
